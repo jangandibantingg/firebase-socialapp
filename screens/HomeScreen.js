@@ -2,45 +2,54 @@ import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity} from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import * as firebase from 'firebase'
+
 
 
 export default class HomeScreen extends React.Component {
-    state = {
-        email : "",
-        displayName : ""
-   }
+//     state = {
+//         email : "",
+//         displayName : ""
+//    }
 
-   componentDidMount(){
-       const {email,displayName} = firebase.auth().currentUser
+//    componentDidMount(){
+//        const {email,displayName} = firebase.auth().currentUser
 
-       this.setState({email,displayName});
-   }
+//        this.setState({email,displayName});
+//    }
 
-   signOutuser = () => {
-       firebase.auth().signOut();
-   };
+//    signOutuser = () => {
+//        firebase.auth().signOut();
+//    };
 
     render(){
         return(
             <View style={style.container}>
-                <Text>hy update terbaru{this.state.email} </Text>
+                <View style={style.header}>
 
-                <TouchableOpacity style={{marginTop:32}} onPress={this.signOutuser}>
-                    <Text> <Ionicons name='ios-home' size={12} /> Log Out!!!</Text>
-                </TouchableOpacity>
-            
+                        <Text style={style.headerTitle}> Feed </Text>
+                </View>
             
             </View>
         );
     }
-
+ 
 }
 
 const style = StyleSheet.create({
     container:{
         flex : 1,
-        justifyContent : "center",
-        alignItems : "center"
+        backgroundColor : "#EFECF4"
+        
+    },
+    header : {
+        paddingTop : 64,
+        paddingBottom : 16,
+        backgroundColor : "#fff",
+        alignItems :  "center",
+        borderBottomWidth : 1,
+        borderBottomColor : "#ebecf4",
+        shadowOffset : {height : 5},
+        shadowOpacity: 0.2,
+        zIndex : 10
     }
 });

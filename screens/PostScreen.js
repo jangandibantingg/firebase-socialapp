@@ -33,7 +33,7 @@ export default class PostScreen extends React.Component {
                     .addPost({ text: this.state.text.trim(), localUri: this.state.image })
                     .then(ref=> {
                     this.setState({text: "", image: null });
-                    this.props.navigation.goback();
+                    this.props.navigation.goBack();
         })
         .catch(error => {
            console.log(error);
@@ -55,7 +55,7 @@ export default class PostScreen extends React.Component {
         return (
             <SafeAreaView style={style.container}>
                 <View style={style.header}>
-               <TouchableOpacity onPress={() => this.props.navigation.goback()}>
+               <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
                    <Ionicons name="md-arrow-back" size={24} color="#d8d9db" ></Ionicons>
                </TouchableOpacity>
           
@@ -93,9 +93,13 @@ export default class PostScreen extends React.Component {
 
 const style = StyleSheet.create({
     container : {
-        flex : 1 
+        flex : 1,
+        backgroundColor : "#fff"
     },
     header : {
+        paddingTop : 64,
+        paddingBottom : 16,
+        backgroundColor : "#fff",
         flexDirection : "row",
         justifyContent : "space-between",
         paddingHorizontal : 32,

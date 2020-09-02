@@ -51,7 +51,7 @@ const AppContainer = createStackNavigator(
           tabBarIcon: ({tintColor}) => (
               <Ionicons
                   name="ios-add-circle"
-                  color="#e9446a"
+                  color="#0BB3BE"
                   size={48}
                   style={{
                     shadowColor:"#e9446a",

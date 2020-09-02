@@ -1,10 +1,16 @@
 import React from 'react'
-import { View, Text, StyleSheet,TextInput, TouchableOpacity} from 'react-native'
+import { View, Text, StyleSheet,TextInput, TouchableOpacity, LayoutAnimation, StatusBar, Image} from 'react-native'
 import * as firebase from 'firebase'
 
 
 
-export default class LoginrScreen extends React.Component {
+export default class LoginScreen extends React.Component {
+
+    static navigationOptions = ({ navigation }) => {
+        return {
+           headerShown: null
+        }
+     }
     state = {
          email : "",
          password : "",
@@ -18,15 +24,16 @@ export default class LoginrScreen extends React.Component {
     render(){
         return(
             <View style={style.container}>
+            <StatusBar barStyle="light-content"></StatusBar>
             
-               <Text style={style.greeting}>
-                    {`hello again. \n welcome back`}
-               </Text>
 
+            <View style={style.loginForom}>
+            <Image source={require("../assets/cashub-logo-green.png")} 
+            style={style.logo}></Image>
+              
                <View style={style.errorMessage}>
                 {this.state.errorMessage && <Text style={style.error} > {this.state.errorMessage} </Text> }
                 </View>
-
                 <View style={style.form}>
 
                     <View> 
@@ -47,14 +54,13 @@ export default class LoginrScreen extends React.Component {
                 <TouchableOpacity style={style.button} onPress={this.handlelogin} >
                     <Text style={{color: "#FFF", fontWeight: "500"}} > Sign in</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={{alignSelf : "center", marginTop :32}} 
+                <TouchableOpacity  style={style.button}
                 onPress = {() => this.props.navigation.navigate("Register")}>
-                    <Text>
-                        Belum Punya akun
-                         <Text style={{ fontWeight : "500", color: "#48C9B0"}}> Daftar</Text>
+                    <Text style={{color: "#FFF", fontWeight: "500"}}>
+                        Sign Up
                     </Text>
                 </TouchableOpacity>
-            
+                </View>
             </View>
 
            
@@ -65,7 +71,19 @@ export default class LoginrScreen extends React.Component {
 
 const style = StyleSheet.create({
     container:{
-        flex : 1
+        flex : 1,
+        backgroundColor : "#fff"
+       
+        
+    },
+    loginForom :{
+ 
+        top :300
+    },
+    loginbg:{
+        position : "absolute",
+        top : 0
+
     },
     greeting : {
         marginTop : 32,
@@ -98,12 +116,21 @@ const style = StyleSheet.create({
        
     },
     button : {
+        marginTop : 10,
         marginHorizontal : 30,
-        backgroundColor : "#48C9B0",
+        backgroundColor : "#0BB3BE",
         borderRadius :4,
         height : 52,
         alignItems : "center",
         justifyContent : "center"
+
+    },
+    logo:{
+        // position : "absolute",
+        width : 172,
+        height: 49,
+        top :25,
+        alignSelf:"center"
 
     },
     error : {
